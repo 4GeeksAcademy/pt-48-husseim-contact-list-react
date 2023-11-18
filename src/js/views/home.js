@@ -8,14 +8,37 @@ const Input = () => {
 	const {store, actions} = useContext(Context);
 	const [tarea, setTarea] = useState('');
 
-	const agregarTarea = () =>{
-		actions.agregarTarea(tarea);
-	}
+	const [name, setName] = useState('');
+	const [phone, setPhone] = useState('');
+	const [address, setAddress] = useState('');
+	const [email, setEmail] = useState('');
 
-	return(<>
-		<input type="text" placeholder="agregar tarea" onChange={(e)=>setTarea(e.target.value)}></input>
-		<button onClick={agregarTarea}>Agregar Tarea</button>
-	</>)
+	const agregarTarea = () => {
+
+		tarea= {
+			name,
+			phone,
+			address,
+			email
+		}
+		actions.agregarTarea(tarea);
+  
+		setName('');
+		setPhone('');
+		setAddress('');
+		setEmail('');
+	};
+
+	return (
+		<>
+			<input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+			<input type="text" placeholder="Phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+			<input type="text" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
+			<input type="text" placeholder="E-Mail" value={email} onChange={(e) => setEmail(e.target.value)} />
+
+			<button onClick={agregarTarea}>Add new contact</button>
+		</>
+	);
 }
 
 const List = () => {
@@ -24,7 +47,7 @@ const List = () => {
 
 	return(<>
 		<ul>
-			{store.listaDeTareas.map((tarea)=>(<li key={index}>{tarea}</li>))}
+			{store.listaDeTareas.map((tarea, index)=>(<li key={index}>{tarea}</li>))}
 		</ul>
 	</>)
 }
