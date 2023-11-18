@@ -40,6 +40,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 			agregarTarea: (tarea)=> {
+	
 				const store = getStore();
 
 				const listaDeTareas = [...store.listaDeTareas, tarea];

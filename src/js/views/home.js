@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
+import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import { Context } from '../store/appContext';
 
 const Input = () => {
 
-	const [store,actions] = useContext(Context);
-	const [tarea,setTarea] = useState('');
+	const {store, actions} = useContext(Context);
+	const [tarea, setTarea] = useState('');
 
 	const agregarTarea = () =>{
 		actions.agregarTarea(tarea);
@@ -19,18 +20,18 @@ const Input = () => {
 
 const List = () => {
 
-	const [store,actions] = useContext(Context);
+	const {store,actions} = useContext(Context);
 
 	return(<>
 		<ul>
-			{store.listaDeTareas.map((tarea)=>(<li>{tarea}</li>))}
+			{store.listaDeTareas.map((tarea)=>(<li key={index}>{tarea}</li>))}
 		</ul>
 	</>)
 }
 
 export const Home = () => (<>
 
-	<Input />
-	<List />
+	<Input/>
+	<List/>
 
 </>);
