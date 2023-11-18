@@ -1,15 +1,36 @@
-import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
+import React, { useContext, useState } from "react";
 import "../../styles/home.css";
+import { Context } from '../store/appContext';
 
-export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working Husseim!
-		</a>
-	</div>
-);
+const Input = () => {
+
+	const [store,actions] = useContext(Context);
+	const [tarea,setTarea] = useState('');
+
+	const agregarTarea = () =>{
+		actions.agregarTarea(tarea);
+	}
+
+	return(<>
+		<input type="text" placeholder="agregar tarea" onChange={(e)=>setTarea(e.target.value)}></input>
+		<button onClick={agregarTarea}>Agregar Tarea</button>
+	</>)
+}
+
+const List = () => {
+
+	const [store,actions] = useContext(Context);
+
+	return(<>
+		<ul>
+			{store.listaDeTareas.map((tarea)=>(<li>{tarea}</li>))}
+		</ul>
+	</>)
+}
+
+export const Home = () => (<>
+
+	<Input />
+	<List />
+
+</>);

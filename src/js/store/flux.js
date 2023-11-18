@@ -12,7 +12,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+		listaDeTareas:[]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -37,6 +38,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			agregarTarea: (tarea)=> {
+				const store = getStore();
+
+				const listaDeTareas = [...store.listaDeTareas, tarea];
+				setStore({...store, listaDeTareas});
 			}
 		}
 	};
