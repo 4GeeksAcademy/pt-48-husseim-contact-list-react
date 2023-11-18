@@ -50,7 +50,21 @@ const List = () => {
 		<ul>
 			{store.listaDeTareas.map((tarea, index)=>(
 			<li key={index}>
-				{tarea.name}, {tarea.phone}, {tarea.address}, {tarea.email}
+
+				<div className="tareas__container">
+
+					<h5><b>Name:</b> {tarea.name} </h5>
+					<h5><b>Phone:</b> {tarea.phone} </h5>
+					<h5><b>Address:</b> {tarea.address} </h5>
+					<h5><b>E-Mail:</b> {tarea.email} </h5>
+
+				</div>
+
+				<div className="boton__container">
+					<button className="boton__edit">Edit</button>
+					<button className="boton__delete">Delete</button>
+				</div>
+
 			</li>
 			))}
 		</ul>
