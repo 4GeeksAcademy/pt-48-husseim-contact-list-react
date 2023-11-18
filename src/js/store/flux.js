@@ -39,11 +39,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-			agregarTarea: (tarea)=> {
+			agregarTarea: (nuevaTarea)=> {
 	
 				const store = getStore();
 
-				const listaDeTareas = [...store.listaDeTareas, tarea];
+				const listaDeTareas = [...store.listaDeTareas, nuevaTarea];
 				setStore({...store, listaDeTareas});
 			}
 		}

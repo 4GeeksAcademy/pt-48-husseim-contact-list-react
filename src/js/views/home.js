@@ -15,13 +15,14 @@ const Input = () => {
 
 	const agregarTarea = () => {
 
-		tarea= {
+		const nuevaTarea= {
 			name,
 			phone,
 			address,
 			email
-		}
-		actions.agregarTarea(tarea);
+		};
+
+		actions.agregarTarea(nuevaTarea);
   
 		setName('');
 		setPhone('');
@@ -47,7 +48,11 @@ const List = () => {
 
 	return(<>
 		<ul>
-			{store.listaDeTareas.map((tarea, index)=>(<li key={index}>{tarea}</li>))}
+			{store.listaDeTareas.map((tarea, index)=>(
+			<li key={index}>
+				{tarea.name}, {tarea.phone}, {tarea.address}, {tarea.email}
+			</li>
+			))}
 		</ul>
 	</>)
 }
