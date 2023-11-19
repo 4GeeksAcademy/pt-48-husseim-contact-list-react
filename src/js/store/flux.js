@@ -1,23 +1,19 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			listaDeTareas:[]
+			listaDeTareas: []
 		},
 		actions: {
-			agregarTarea: (nuevaTarea)=> {
-	
+			agregarTarea: (nuevaTarea) => {
 				const store = getStore();
-
 				const listaDeTareas = [...store.listaDeTareas, nuevaTarea];
-				setStore({...store, listaDeTareas});
+				setStore({ ...store, listaDeTareas });
 			},
-			deleteContact: (index)=> {
-
+			deleteContact: (index) => {
 				const store = getStore();
-
-				const updatedContact = listaDeTareas.filter((tarea) => tarea.index !== index);
-				setStore(updatedContact);
-
+				const updatedTareasList = store.listaDeTareas.filter((_, i) => i !== index);
+				setStore({ ...store, listaDeTareas: updatedTareasList });
+			}
 		}
 	};
 };
